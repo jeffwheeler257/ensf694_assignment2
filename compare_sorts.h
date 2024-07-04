@@ -1,9 +1,10 @@
-//
-//  compare_sorts.h
-//  Compare Sort Methods
-//
-//  Created by Mahmood Moussavi on 2024-06-06.
-//
+/*
+ *  compare_sorts.h
+ *  ENSF 694 Lab 2 - Exercise E
+ *  Created by Mahmood Moussavi
+ *  Completed by: Jeff Wheeler
+ *  Submission date: July 10, 2024
+ */
 
 #ifndef compare_sorts_h
 #define compare_sorts_h

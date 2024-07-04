@@ -1,3 +1,11 @@
+/*
+ *  compare_sorts.cpp
+ *  ENSF 694 Lab 2 - Exercise E
+ *  Created by Mahmood Moussavi
+ *  Completed by: Jeff Wheeler
+ *  Submission date: July 10, 2024
+ */
+
 #include "compare_sorts.h"
 void to_lower(char *str)
 {

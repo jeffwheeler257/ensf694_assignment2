@@ -17,6 +17,12 @@ int my_strlen(const char *s);
 
 void my_strncat(char *dest, const char *source, int n);
 /*  Duplicates strncat from <cstring>, except return type is void.
+ *  REQUIRES
+ *      dest and source point to the beginning of a string 
+ *      n > 0
+ *  PROMISES
+ *      Returns the concatenation of dest and n number of characters 
+ *      from source.
  */
 
 #include <iostream>
@@ -94,7 +100,6 @@ int main(void)
     strcmp("Orange", "Apple") << endl;
     return 0;
 }
-
 
 int my_strlen(const char *s){
     int length = 0;
