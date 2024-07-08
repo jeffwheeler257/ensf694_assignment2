@@ -17,28 +17,63 @@ void to_lower(char *str)
 
 void strip_punctuation(char *word)
 {
-// Students should complete the implementation of this function
+    for (int i = 0; i < (MAX_WORD_SIZE + 1); i++){
+        if (ispunct(word[i])){
+            word[i] = '\0';
+        }
+    }
 }
 
 bool is_unique(char words[MAX_UNIQUE_WORDS][MAX_WORD_SIZE], int num_words, const char *word)
 {
-    // Students should complete the implementation of this function
+    for (int i = 0; i < num_words; i++){
+        if (strcmp(words[i], word) == 0){
+            return false;
+        }
+    }
     return true;
 }
 
+int mystrcomp(const char *a, const char *b){
+    if (strcmp(a, b) < 0)
+        return -1;
+    else if (strcmp (a, b) > 0)
+        return 1;
+    else
+        return 0;
+}
+
+// WORK ON QUICK SORT
 void quicksort(int *indices, char words[MAX_UNIQUE_WORDS][MAX_WORD_SIZE], int left, int right)
 {
-    // Students should complete the implementation of this function
+    qsort(indices, sizeof(indices)/sizeof(int), sizeof(int), mystrcomp); // ??
 }
 
 void shellsort(int *indices, char words[MAX_UNIQUE_WORDS][MAX_WORD_SIZE], int size) 
 {
-    // Students should complete the implementation of this function
+    for (int gap = size; gap > 0; gap /= 2){
+        for (int i = gap; i < size; i++){
+            int temp = indices[i];
+            int j;
+            for (j = 1; j >= gap && strcmp(words[j - gap], words[i]) > 0; j -= gap){
+                indices[j] = indices[j - gap];
+            }
+            indices[j] = temp;
+        }
+    }
 }
 
 void bubblesort(int *indices, char words[MAX_UNIQUE_WORDS][MAX_WORD_SIZE], int size)
 {
-    // Students should complete the implementation of this function
+    for (int i = 0; i < (size - 1); i++){
+        for (int j = 0; j < (size - 1); j++){
+            if (strcmp(words[j + 1], words[j]) > 0){
+                int temp = indices[j];
+                indices[j] = indices[j + 1];
+                indices[j + 1] = temp;
+            }
+        }
+    }
 }
 
 void read_words(const char *input_file, char words[MAX_UNIQUE_WORDS][MAX_WORD_SIZE], int &num_words)
@@ -100,9 +135,9 @@ int main() {
         indices[i] = i;
     }
 
-    sort_and_measure_quicksort(words,indices, num_words, quicksort, "Quick Sort");
+    sort_and_measure_quicksort(words, indices, num_words, quicksort, "Quick Sort");
     write_words("/Users/mahmoodmoussavi/Dropbox/ENSF 694 Labs/Lab2/Compare Sort Methods/output_quicksort.txt", words, indices, num_words);
-    sort_and_measure_shell_bubble(words,indices, num_words, shellsort, "Shell Sort");
+    sort_and_measure_shell_bubble(words, indices, num_words, shellsort, "Shell Sort");
     write_words("/Users/mahmoodmoussavi/Dropbox/ENSF 694 Labs/Lab2/Compare Sort Methods/output_shellsort.txt", words, indices, num_words);
     sort_and_measure_shell_bubble(words, indices, num_words, bubblesort, "Bubble Sort");
     write_words("/Users/mahmoodmoussavi/Dropbox/ENSF 694 Labs/Lab2/Compare Sort Methods/output_bubblesort.txt", words, indices, num_words);
