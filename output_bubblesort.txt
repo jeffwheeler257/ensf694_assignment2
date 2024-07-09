@@ -1,5 +1,4 @@
 a
-do
 example
 great
 i
@@ -7,7 +6,4 @@ is
 it
 like
 nice
-nice
-think
 this
-what
